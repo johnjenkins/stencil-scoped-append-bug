@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/scope-test.esm.js"></script>
+    <script nomodule src="/build/scope-test.js"></script>
+  </head>
+  <body>
+    <my-component first="Stencil" last="'Don't call me a framework' JS">
+      <p>HELLO</p>
+    </my-component>
+
+    <button type="button" id="addthing">add via insertAdjacentHTML</button>
+    <button type="button" id="addthing2">add via appendChild</button>
+
+    <script>
+      var comp = document.querySelector('my-component');
+      var addthing = document.querySelector('#addthing');
+      var addthing2 = document.querySelector('#addthing2');
+
+      addthing.addEventListener('click', () => {
+        comp.insertAdjacentHTML('beforeend', `<p>Added via insertAdjacentHTML</p>`)
+      });
+
+      addthing2.addEventListener('click', () => {
+        var ele = document.createElement('p');
+        ele.innerText = 'Added via appendChild'
+        comp.appendChild(ele);
+      });
+    </script>
+  </body>
+</html>
